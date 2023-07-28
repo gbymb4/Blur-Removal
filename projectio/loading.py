@@ -179,7 +179,7 @@ class DirtyDataset(Dataset):
         img = np.array(img) / 255
         
         if len(img.shape) == 2:
-            img = np.tile(img, (*img.shape, 3))
+            img = np.stack((img,)*3, axis=2)
         
         img = np.rollaxis(img, 2)
         
