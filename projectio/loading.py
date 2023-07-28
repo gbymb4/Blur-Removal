@@ -178,6 +178,9 @@ class DirtyDataset(Dataset):
         img = Image.open(img_fname)
         img = np.array(img) / 255
         
+        if len(img.shape) == 2:
+            img = np.tile(img, (*img.shape, 3))
+        
         img = np.rollaxis(img, 2)
         
         img_chunks = split_with_padding(img, self.chunk_size)
