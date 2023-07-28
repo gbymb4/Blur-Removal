@@ -1,0 +1,33 @@
+seed: 0
+dataset: COCO
+model: UNet
+device: cuda
+train: true
+test: true
+model_arguments:
+  channels: 32
+  img_channels: 3
+optimizer_arguments:
+  epochs: 500
+  lr: 0.0001
+  valid_freq: 1
+  mse_weight: 1
+  perc_weight: 1
+loading_arguments:
+  # num_workers: 8
+  order_seed: 0
+  dataset: 'COCO' 
+  train_frac: 0.6
+  valid_frac: 0.2
+  load_limit: ~
+dataloader_arguments:
+  batch_size: 8
+dataset_arguments:
+  device: cpu
+  chunk_size: 256
+  gaussian_kernel_min: 3
+  gaussian_kernel_max: 5
+  blur_sigma_min: 0.5
+  blur_sigma_max: 2
+  noise_sigma_min: 0.01
+  noise_sigma_max: 0.1
